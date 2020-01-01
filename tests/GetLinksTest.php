@@ -3,12 +3,13 @@
 namespace AliexApi\Tests;
 
 use AliexApi\Operations\GetLinks;
- 
-class GetLinksTest extends \PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class GetLinksTest extends TestCase
+{
 
     public function testGetLinks()
     {
         $listproducts = new GetLinks();
     }
- 
 }

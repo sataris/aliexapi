@@ -3,12 +3,14 @@
 namespace AliexApi\Tests;
 
 use AliexApi\Operations\GetProductDetail;
- 
-class GetProductDetailTest extends \PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class GetProductDetailTest extends TestCase
+{
+    
 
     public function testGetProductDetail()
     {
         $listproducts = new GetProductDetail();
     }
- 
 }

@@ -5,8 +5,10 @@ namespace AliexApi\Tests;
 use AliexApi\Configuration\GenericConfiguration;
 use AliexApi\Request\Rest\Request;
 use AliexApi\Request\RequestFactory;
+use PHPUnit\Framework\TestCase;
 
-class RequestFactoryTest extends \PHPUnit_Framework_TestCase {
+class RequestFactoryTest extends TestCase
+{
 
     public function testRequestFactory()
     {
@@ -16,7 +18,9 @@ class RequestFactoryTest extends \PHPUnit_Framework_TestCase {
             ->setDigitalSign('dummydigitalsign')
             ->setRequest(new Request());
         $request = RequestFactory::createRequest($configuration);
-        $this->assertSame($configuration, \PHPUnit_Framework_Assert::readAttribute($request, 'configuration'));
-   }
- 
+        $reflectionClass = new \ReflectionClass($request);
+        $property = $reflectionClass->getProperty('configuration');
+        $property->setAccessible(true);
+        $this->assertSame($configuration, $property->getValue($request));
+    }
 }

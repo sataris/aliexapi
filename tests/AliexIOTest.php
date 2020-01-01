@@ -1,21 +1,22 @@
-<?php 
+<?php
 
 namespace AliexApi\Tests;
 
 use AliexApi\Configuration\GenericConfiguration;
 use AliexApi\AliexIO;
 use AliexApi\Operations\ListProducts;
- 
-class AliexIOTest extends \PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class AliexIOTest extends TestCase
+{
 
     public function aliconfig($conf)
     {
         $conf
-            ->setApiKey('12345')
-            ->setTrackingKey('trackkey')
-            ->setDigitalSign('dummydigitalsign');
-            return $conf;
-
+        ->setApiKey('12345')
+        ->setTrackingKey('trackkey')
+        ->setDigitalSign('dummydigitalsign');
+        return $conf;
     }
  
     public function testAliexIO()
@@ -30,7 +31,5 @@ class AliexIOTest extends \PHPUnit_Framework_TestCase {
         $listproducts->setCategoryId('509');
         $listproducts->setHighQualityItems('true');
         $formattedResponse = $aliexIO->runOperation($listproducts);
-
     }
- 
 }
